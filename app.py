@@ -3,9 +3,10 @@ import sys
 
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
-from linebot import LineBotApi, WebhookParser
+from linebot import LineBotApi, WebhookParser, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
+from linebot.models import MessageEvent, PostbackEvent, TextSendMessage, TemplateSendMessage,
+                            TextMessage, ButtonsTemplate,PostbackTemplateAction, MessageTemplateAction, URITemplateAction 
 
 from fsm import TocMachine
 from utils import send_text_message
@@ -50,7 +51,7 @@ if channel_access_token is None:
 
 line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
-
+handler = WebhookHandler(channel_secret)
 
 @app.route("/callback", methods=["POST"])
 def callback():
@@ -71,12 +72,71 @@ def callback():
             continue
         if not isinstance(event.message, TextMessage):
             continue
-
+'''
         line_bot_api.reply_message(
             event.reply_token, TextSendMessage(text=event.message.text)
         )
-
+'''
     return "OK"
+@handler.add(PostbackEvent)
+def handle_post_message(event):
+# can not get event text
+    print("event =", event)
+    line_bot_api.reply_message(
+                event.reply_token,
+                TextMessage(
+                    text=str(str(event.postback.data)),
+                )
+            )
+
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    print("event =", event)
+    if event.message.text == "查詢個人檔案":
+        user_id = event.source.user_id
+        profile = line_bot_api.get_profile(user_id, timeout=None)
+        line_bot_api.reply_message(
+                    event.reply_token,
+                    TextMessage(
+                        text=str(profile),
+                    )
+                )
+
+    else:
+        button_template_message =ButtonsTemplate(
+                                thumbnail_image_url="https://i.imgur.com/eTldj2E.png?1",
+                                title='Menu', 
+                                text='Please select',
+                                image_size="cover",
+                                actions=[
+    #                                PostbackTemplateAction 點擊選項後，
+    #                                 除了文字會顯示在聊天室中，
+    #                                 還回傳data中的資料，可
+    #                                 此類透過 Postback event 處理。
+                                    PostbackTemplateAction(
+                                        label='查詢個人檔案顯示文字-Postback', 
+                                        text='查詢個人檔案',
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    PostbackTemplateAction(
+                                        label='不顯示文字-Postback', 
+                                        text = None,
+                                        data='action=buy&itemid=1'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='查詢個人檔案-Message', text='查詢個人檔案'
+                                    ),
+                                ]
+                            )
+                            
+        line_bot_api.reply_message(
+            event.reply_token,
+            TemplateSendMessage(
+                alt_text="Template Example",
+                template=button_template_message
+            )
+        )
 
 
 @app.route("/webhook", methods=["POST"])
