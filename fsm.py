@@ -52,7 +52,8 @@ class TocMachine(GraphMachine):
 
 
     def on_enter_life(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger life")
 
     def on_enter_nowgood(self, event):
         pass
