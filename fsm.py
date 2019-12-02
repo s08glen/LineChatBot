@@ -12,40 +12,40 @@ class TocMachine(GraphMachine):
     def is_going_to_life(self, event):
         text = event.message.text
         return text.lower() == "go to life"
-		
-	def is_going_to_nowgood(self, event):
+
+    def is_going_to_nowgood(self, event):
         text = event.message.text
         return text.lower() == "go to nowgood"
-			
-	def is_going_to_votenowagain(self, event):
+
+    def is_going_to_votenowagain(self, event):
         text = event.message.text
         return text.lower() == "go to votenowagain"
-		
-	def is_going_to_nowthank(self, event):
+
+    def is_going_to_nowthank(self, event):
         text = event.message.text
         return text.lower() == "go to nowthank"
 		
-	def is_going_to_chooseanother(self, event):
+    def is_going_to_chooseanother(self, event):
         text = event.message.text
         return text.lower() == "go to chooseanother"
 		
-	def is_going_to_kp(self, event):
+    def is_going_to_kp(self, event):
         text = event.message.text
         return text.lower() == "go to kp"
-		
-	def is_going_to_votehan(self, event):
+	
+    def is_going_to_votehan(self, event):
         text = event.message.text
         return text.lower() == "go to votehan"
-		
-	def is_going_to_voteorange(self, event):
+
+    def is_going_to_voteorange(self, event):
         text = event.message.text
         return text.lower() == "go to voteorange"
-		
-	def is_going_to_orangethank(self, event):
+	
+    def is_going_to_orangethank(self, event):
         text = event.message.text
         return text.lower() == "go to orangethank"
-		
-	def is_going_to_u87(self, event):
+	
+    def is_going_to_u87(self, event):
         text = event.message.text
         return text.lower() == "go to u87"
 
