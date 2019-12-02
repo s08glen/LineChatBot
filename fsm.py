@@ -2,8 +2,7 @@ from transitions.extensions import GraphMachine
 
 
 from utils import send_text_message, send_image_url
-from linebot.models import MessageEvent, PostbackEvent, TextSendMessage, TemplateSendMessage,
-                            TextMessage, ButtonsTemplate,PostbackTemplateAction, MessageTemplateAction, URITemplateAction,ImageSendMessage
+from linebot.models import MessageEvent, PostbackEvent, TextSendMessage, TemplateSendMessage, ButtonsTemplate,PostbackTemplateAction, MessageTemplateAction, URITemplateAction,ImageSendMessage
 
 
 class TocMachine(GraphMachine):
