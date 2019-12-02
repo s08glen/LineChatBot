@@ -4,10 +4,9 @@ import sys
 from flask import Flask, jsonify, request, abort, send_file
 from dotenv import load_dotenv
 from linebot import LineBotApi, WebhookParser, WebhookHandler
-from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from linebot.models import MessageEvent, PostbackEvent, TextSendMessage, TemplateSendMessage,
-                            TextMessage, ButtonsTemplate,PostbackTemplateAction, MessageTemplateAction, URITemplateAction,
-                            ImageSendMessage
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
+
 from fsm import TocMachine
 from utils import send_text_message
 
@@ -15,21 +14,105 @@ load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["user", "life", "nowgood","votenowagain","nowthank",
+        "chooseanother","kp","votehan","voteorange","orangethank","u87"],
     transitions=[
         {
             "trigger": "advance",
             "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
+            "dest": "life",
+            "conditions": "is_going_to_life",
         },
-        {
+		{
             "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
+            "source": "life",
+            "dest": "nowgood",
+            "conditions": "is_going_to_nowgood",
         },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+		{
+            "trigger": "advance",
+            "source": "life",
+            "dest": "votehan",
+            "conditions": "is_going_to_votehan",
+        },
+		{
+            "trigger": "advance",
+            "source": "nowgood",
+            "dest": "votenowagain",
+            "conditions": "is_going_to_votenowagain",
+        },
+		{
+            "trigger": "advance",
+            "source": "nowgood",
+            "dest": "chooseanother",
+            "conditions": "is_going_to_chooseanother",
+        },
+		{
+            "trigger": "advance",
+            "source": "votenowagain",
+            "dest": "chooseanother",
+            "conditions": "is_going_to_chooseanother",
+        },
+		{
+            "trigger": "advance",
+            "source": "chooseanother",
+            "dest": "votenowagain",
+            "conditions": "is_going_to_votenowagain",
+        },
+		{
+            "trigger": "advance",
+            "source": "chooseanother",
+            "dest": "kp",
+            "conditions": "is_going_to_kp",
+        },
+		{
+            "trigger": "advance",
+            "source": "kp",
+            "dest": "chooseanother",
+            "conditions": "is_going_to_chooseanother",
+        },
+		{
+            "trigger": "advance",
+            "source": "chooseanother",
+            "dest": "votehan",
+            "conditions": "is_going_to_votehan",
+        },
+		{
+            "trigger": "advance",
+            "source": "chooseanother",
+            "dest": "voteorange",
+            "conditions": "is_going_to_voteorange",
+        },
+		{
+            "trigger": "advance",
+            "source": "votehan",
+            "dest": "voteorange",
+            "conditions": "is_going_to_voteorange",
+        },
+		{
+            "trigger": "advance",
+            "source": "voteorange",
+            "dest": "votenowagain",
+            "conditions": "is_going_to_votenowagain",
+        },
+		{
+            "trigger": "advance",
+            "source": "voteorange",
+            "dest": "orangethank",
+            "conditions": "is_going_to_orangethank",
+        },
+		{
+            "trigger": "advance",
+            "source": "votenowagain",
+            "dest": "nowthank",
+            "conditions": "is_going_to_nowthank",
+        },
+		{
+            "trigger": "advance",
+            "source": "votehan",
+            "dest": "u87",
+            "conditions": "is_going_to_u87",
+        },
     ],
     initial="user",
     auto_transitions=False,
@@ -53,85 +136,42 @@ line_bot_api = LineBotApi(channel_access_token)
 parser = WebhookParser(channel_secret)
 handler = WebhookHandler(channel_secret)
 
-@app.route("/callback", methods=['POST'])
-def callback():
-    # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    # get user id when reply
+    user_id = event.source.user_id
+    print("user_id =", user_id)
 
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text))
+
+
+@app.route("/callback", methods=["POST"])
+def callback():
+    signature = request.headers["X-Line-Signature"]
     # get request body as text
     body = request.get_data(as_text=True)
-
     app.logger.info("Request body: " + body)
 
-    # handle webhook body
+    # parse webhook body
     try:
-        handler.handle(body, signature)
+        events = parser.parse(body, signature)
     except InvalidSignatureError:
         abort(400)
 
-    return 'OK'
+    # if event is MessageEvent and message is TextMessage, then echo text
+    for event in events:
+        if not isinstance(event, MessageEvent):
+            continue
+        if not isinstance(event.message, TextMessage):
+            continue
 
-
-@handler.add(PostbackEvent)
-def handle_post_message(event):
-# can not get event text
-    print("event =", event)
-    line_bot_api.reply_message(
-                event.reply_token,
-                TextMessage(
-                    text=str(str(event.postback.data)),
-                )
-            )
-
-
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    print("event =", event)
-    if event.message.text == "查詢個人檔案":
-        user_id = event.source.user_id
-        profile = line_bot_api.get_profile(user_id, timeout=None)
         line_bot_api.reply_message(
-                    event.reply_token,
-                    TextMessage(
-                        text=str(profile),
-                    )
-                )
-
-    else:
-        button_template_message =ButtonsTemplate(
-                                thumbnail_image_url="https://i.imgur.com/eTldj2E.png?1",
-                                title='Menu', 
-                                text='Please select',
-                                image_size="cover",
-                                actions=[
-    #                                PostbackTemplateAction 點擊選項後，
-    #                                 除了文字會顯示在聊天室中，
-    #                                 還回傳data中的資料，可
-    #                                 此類透過 Postback event 處理。
-                                    PostbackTemplateAction(
-                                        label='查詢個人檔案顯示文字-Postback', 
-                                        text='查詢個人檔案',
-                                        data='action=buy&itemid=1'
-                                    ),
-                                    PostbackTemplateAction(
-                                        label='不顯示文字-Postback', 
-                                        text = None,
-                                        data='action=buy&itemid=1'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='查詢個人檔案-Message', text='查詢個人檔案'
-                                    ),
-                                ]
-                            )
-                            
-        line_bot_api.reply_message(
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text="Template Example",
-                template=button_template_message
-            )
+            event.reply_token, TextSendMessage(text=event.message.text)
         )
 
+    return "OK"
 
 
 @app.route("/webhook", methods=["POST"])
@@ -163,9 +203,11 @@ def webhook_handler():
 
     return "OK"
 
-@app.route('/')
-def homepage():
-    return 'Hello, World!'
+
+@app.route("/show-fsm", methods=["GET"])
+def show_fsm():
+    machine.get_graph().draw("fsm.png", prog="dot", format="png")
+    return send_file("fsm.png", mimetype="image/png")
 
 
 if __name__ == "__main__":
