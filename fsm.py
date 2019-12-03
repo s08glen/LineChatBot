@@ -250,7 +250,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
                 title='Vote Han',
-                text='你要投給宋楚瑜嗎?'',
+                text='你要投給宋楚瑜嗎?,
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
                     MessageTemplateAction(
