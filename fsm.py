@@ -81,10 +81,9 @@ class TocMachine(GraphMachine):
         )
         reply_token = event.reply_token
         send_template(reply_token, buttons_template)
-        '''
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger life")
-        '''
+        
     def on_enter_nowgood(self, event):
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger nowgood")
