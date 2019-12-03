@@ -31,7 +31,7 @@ class TocMachine(GraphMachine):
 		
     def is_going_to_chooseanother(self, event):
         text = event.message.text
-        return text.lower() == "go to chooseanother"
+        return ( text.lower() == "go to chooseanother" or text.lower() == "不好" or text.lower() == "不會" or text.lower() == "回去再選一次")
 		
     def is_going_to_kp(self, event):
         text = event.message.text
@@ -123,7 +123,7 @@ class TocMachine(GraphMachine):
                     ),
                     MessageTemplateAction(
                         label='不好',
-                        text='go to chooseanother'
+                        text='不好'
                     ),
                 ]
             )
@@ -155,7 +155,7 @@ class TocMachine(GraphMachine):
                     ),
                     MessageTemplateAction(
                         label='不會',
-                        text='go to chooseanother'
+                        text='不會'
                     ),
                 ]
             )
@@ -230,7 +230,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='回去再選一次',
-                        text='go to chooseanother'
+                        text='回去再選一次'
                     ),
                 ]
             )
