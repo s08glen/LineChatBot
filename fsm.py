@@ -91,6 +91,10 @@ class TocMachine(GraphMachine):
                         text='go to nowgood'
                     ),
                     MessageTemplateAction(
+                        label='普通',
+                        text='go to nowgood'
+                    ),
+                    MessageTemplateAction(
                         label='不好',
                         #text='go to votehan'
                         text='不好'
