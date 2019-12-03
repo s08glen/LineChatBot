@@ -15,7 +15,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_life(self, event):
         text = event.message.text
-        return text.lower() == "go to life"
+        return text.lower() == "Start"
 
     def is_going_to_nowgood(self, event):
         text = event.message.text
@@ -60,8 +60,26 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, "Trigger user")
 
     def on_enter_life(self, event):
-        reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger life")
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Life'',
+                text='你覺得現在經濟生活過得如何??',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='go to nowgood',
+                        text='go to nowgood'
+                    ),
+                    MessageTemplateAction(
+                        label='go to votehan',
+                        text='go to votehan'
+                    ),
+                ]
+            )
+        )
+        #reply_token = event.reply_token
+        line_bot_api.reply_message(event.reply_token, buttons_template)
 
     def on_enter_nowgood(self, event):
         reply_token = event.reply_token
