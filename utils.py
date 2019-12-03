@@ -22,10 +22,10 @@ def send_image_url(id, img_url):
     return "OK"
 
 
-def send_template(reply_token,template):
+def send_template(id,reply_token,button_template):
     line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(reply_token, template)
-    
+    line_bot_api.push_message(id,TemplateSendMessage(alt_text="Template Example", template=button_template))
+
     return "OK"
 """
 def send_button_message(id, text, buttons):
