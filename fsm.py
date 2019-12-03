@@ -110,7 +110,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Now Good?',
                 text='現任總統蔡英文做得好嗎??',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/IQdilw0.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='好',
@@ -142,7 +142,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Vote now again?',
                 text='你會再投連任嗎??',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/1UGnv0W.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='會',
@@ -167,7 +167,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Thank you',
                 text='小英感謝你?',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/gWUraP3.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='回到一開始',
@@ -226,7 +226,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Vote Han',
                 text='2020大選你會投給韓國瑜嗎?',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/bi6SDgg.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='會',
@@ -251,7 +251,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Vote Han',
                 text='你要投給宋楚瑜嗎?',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/vpxlYRd.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='Yes',
@@ -259,7 +259,7 @@ class TocMachine(GraphMachine):
                     ),
                     MessageTemplateAction(
                         label='No',
-                        text='go to voteonowagain'
+                        text='go to votenowagain'
                     ),
                 ]
             )
@@ -276,7 +276,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Thank you',
                 text='宋伯伯感謝你',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/vpxlYRd.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='回到一開始',
@@ -298,10 +298,10 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Thank you',
                 text='幹你腦袋有問題嗎?????',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/guiku5e.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='回去重做',
+                        label='回去重投',
                         text='go to user'
                     ),
                 ]
