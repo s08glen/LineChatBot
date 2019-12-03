@@ -64,7 +64,7 @@ class TocMachine(GraphMachine):
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
-                title='Life'',
+                title='Life',
                 text='你覺得現在經濟生活過得如何??',
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
