@@ -11,8 +11,8 @@ class TocMachine(GraphMachine):
 
     def is_going_to_user(self, event):
         text = event.message.text
-        rt = text.lower() == "go to user" or text.lower() == 'OK' 
-        return rt
+        rt = text.lower() == "go to user"
+        return text.lower() == 'OK'
 
     def is_going_to_life(self, event):
         text = event.message.text
