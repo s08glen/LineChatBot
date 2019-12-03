@@ -56,8 +56,25 @@ class TocMachine(GraphMachine):
 
 
     def on_enter_user(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Start',
+                text='User',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='Go',
+                        text='go to life'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger user")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
 
     def on_enter_life(self, event):
         user_id = event.source.user_id
@@ -96,11 +113,11 @@ class TocMachine(GraphMachine):
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='go to votenowagain',
+                        label='好',
                         text='go to votenowagain'
                     ),
                     MessageTemplateAction(
-                        label='go to chooseanother',
+                        label='不好',
                         text='go to chooseanother'
                     ),
                 ]
@@ -118,12 +135,50 @@ class TocMachine(GraphMachine):
         '''
 
     def on_enter_votenowagain(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Vote now again?',
+                text='你會再投連任嗎??',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='會',
+                        text='go to nowthank'
+                    ),
+                    MessageTemplateAction(
+                        label='不會',
+                        text='go to chooseanother'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger vote now again")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
 
     def on_enter_nowthank(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Thank you',
+                text='小瑛感謝你??',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='回到一開始',
+                        text='go to user'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger nowthank")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
 
     def on_enter_chooseanother(self, event):
         reply_token = event.reply_token
