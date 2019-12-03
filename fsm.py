@@ -67,7 +67,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='Go',
-                        text='Go'
+                        text='go to life'
                     ),
                 ]
             )
