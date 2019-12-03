@@ -1,7 +1,7 @@
 from transitions.extensions import GraphMachine
 
 
-from utils import send_text_message, send_image_url,reply_template,push_template
+from utils import send_text_message, send_image_url,send_template
 from linebot.models import MessageEvent, PostbackEvent, TextSendMessage, TemplateSendMessage, ButtonsTemplate,PostbackTemplateAction, MessageTemplateAction, URITemplateAction,ImageSendMessage
 
 
@@ -80,18 +80,42 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
-        
-        #user_id = event.source.user_id
         reply_token = event.reply_token
         #push_template(id,buttons_template)
-        reply_template(reply_token, buttons_template)
-        '''
-        reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger life")
-        '''
+        send_template(reply_token, buttons_template)
+
+
     def on_enter_nowgood(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Now Good?',
+                text='現任總統蔡英文做得好嗎??',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='go to votenowagain',
+                        text='go to votenowagain'
+                    ),
+                    MessageTemplateAction(
+                        label='go to chooseanother',
+                        text='go to chooseanother'
+                    ),
+                ]
+            )
+        )
+        reply_token = event.reply_token
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
+
+
+
+        '''
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger nowgood")
+        '''
 
     def on_enter_votenowagain(self, event):
         reply_token = event.reply_token
