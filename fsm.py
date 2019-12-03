@@ -23,11 +23,11 @@ class TocMachine(GraphMachine):
 
     def is_going_to_votenowagain(self, event):
         text = event.message.text
-        return (text.lower() == "go to votenowagain" or text.lower() == "好" or text.lower() == "小英")
+        return (text.lower() == "go to votenowagain" or text.lower() == "好" or text.lower() == "小英" or text.lower() == "No" )
 
     def is_going_to_nowthank(self, event):
         text = event.message.text
-        return text.lower() == "go to nowthank"
+        return ( text.lower() == "go to nowthank" or text.lower() == "會" )
 		
     def is_going_to_chooseanother(self, event):
         text = event.message.text
@@ -35,23 +35,23 @@ class TocMachine(GraphMachine):
 		
     def is_going_to_kp(self, event):
         text = event.message.text
-        return text.lower() == "go to kp"
+        return ( text.lower() == "go to kp" or text.lower() == "柯P")
 	
     def is_going_to_votehan(self, event):
         text = event.message.text
-        return ( text.lower() == "go to votehan" or text.lower() == "不好")
+        return ( text.lower() == "go to votehan" or text.lower() == "不好" or text.lower() == "韓導")
 
     def is_going_to_voteorange(self, event):
         text = event.message.text
-        return text.lower() == "go to voteorange"
+        return ( text.lower() == "go to voteorange" or text.lower() == "宋楚瑜" or text.lower() == "不會")
 	
     def is_going_to_orangethank(self, event):
         text = event.message.text
-        return text.lower() == "go to orangethank"
+        return (text.lower() == "go to orangethank" or text.lower() == "Yes")
 	
     def is_going_to_u87(self, event):
         text = event.message.text
-        return text.lower() == "go to u87"
+        return (text.lower() == "go to u87" or text.lower() == "會")
 
 
 
@@ -151,7 +151,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='會',
-                        text='go to nowthank'
+                        text='會'
                     ),
                     MessageTemplateAction(
                         label='不會',
@@ -197,7 +197,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='柯P',
-                        text='go to kp'
+                        text='柯P'
                     ),
                     MessageTemplateAction(
                         label='小英',
@@ -205,11 +205,11 @@ class TocMachine(GraphMachine):
                     ),
                     MessageTemplateAction(
                         label='韓導',
-                        text='go to votehan'
+                        text='韓導'
                     ),
                     MessageTemplateAction(
                         label='宋楚瑜',
-                        text='go to voteorange'
+                        text='宋楚瑜'
                     ),
                 ]
             )
@@ -251,11 +251,11 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='會',
-                        text='go to u87'
+                        text='會'
                     ),
                     MessageTemplateAction(
                         label='不會',
-                        text='go to voteorange'
+                        text='不會'
                     ),
                 ]
             )
@@ -276,11 +276,11 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='Yes',
-                        text='go to orangethank'
+                        text='Yes'
                     ),
                     MessageTemplateAction(
                         label='No',
-                        text='go to votenowagain'
+                        text='No'
                     ),
                 ]
             )
@@ -318,7 +318,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
                 title='Thank you',
-                text='幹你腦袋有問題嗎?????',
+                text='ㄍㄋㄋ你腦袋有問題嗎?????',
                 thumbnail_image_url='https://i.imgur.com/guiku5e.jpg',
                 actions=[
                     MessageTemplateAction(
