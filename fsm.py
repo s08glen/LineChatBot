@@ -60,7 +60,8 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, "Trigger user")
 
     def on_enter_life(self, event):
-        
+        user_id = event.source.user_id
+        print(user_id)
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
@@ -79,12 +80,14 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
-        user_id = event.source.user_id
+        
+        #user_id = event.source.user_id
         reply_token = event.reply_token
-        send_template(user_id, reply_token, buttons_template)
+        send_template(reply_token, buttons_template)
+        '''
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger life")
-        
+        '''
     def on_enter_nowgood(self, event):
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger nowgood")
