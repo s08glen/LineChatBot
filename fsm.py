@@ -15,7 +15,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_life(self, event):
         text = event.message.text
-        return (text.lower() == "go to life" or text.lower() == "Go")
+        return (text.lower() == "go to life" or text.lower() == "go")
 
     def is_going_to_nowgood(self, event):
         text = event.message.text
@@ -62,12 +62,12 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
                 title='Start',
-                text='User',
+                text='按下Go開始',
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='Go',
-                        text='go to life'
+                        text='Go'
                     ),
                 ]
             )
@@ -113,8 +113,8 @@ class TocMachine(GraphMachine):
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
-                title='Now Good?',
-                text='現任總統蔡英文做得好嗎??',
+                title='現任總統蔡英文做得好嗎??',
+                text='我是覺得外交做的還不錯啦',
                 thumbnail_image_url='https://i.imgur.com/IQdilw0.jpg',
                 actions=[
                     MessageTemplateAction(
@@ -171,7 +171,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
                 title='Thank you',
-                text='小英感謝你?',
+                text='小英感謝你',
                 thumbnail_image_url='https://i.imgur.com/gWUraP3.jpg',
                 actions=[
                     MessageTemplateAction(
@@ -191,7 +191,7 @@ class TocMachine(GraphMachine):
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
-                title='Vote now again?',
+                title='Vote Who',
                 text='那這些人要支持誰',
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
@@ -245,7 +245,7 @@ class TocMachine(GraphMachine):
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
-                title='Vote Han',
+                title='那你渴望發大財嗎',
                 text='2020大選你會投給韓國瑜嗎?',
                 thumbnail_image_url='https://i.imgur.com/bi6SDgg.jpg',
                 actions=[
@@ -317,7 +317,7 @@ class TocMachine(GraphMachine):
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
-                title='Thank you',
+                title='滿嘴謊言的騙子',
                 text='ㄍㄋㄋ你腦袋有問題嗎?????',
                 thumbnail_image_url='https://i.imgur.com/guiku5e.jpg',
                 actions=[
