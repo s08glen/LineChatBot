@@ -31,7 +31,7 @@ class TocMachine(GraphMachine):
 		
     def is_going_to_chooseanother(self, event):
         text = event.message.text
-        return ( text.lower() == "go to chooseanother" or text.lower() == "不好" or text.lower() == "不會" or text.lower() == "回去再選一次" or text.lower() == "No")
+        return ( text.lower() == "go to chooseanother" or text.lower() == "不好" or text.lower() == "不會" or text.lower() == "回去再選一次" or text.lower() == "不要，誰理他")
 		
     def is_going_to_kp(self, event):
         text = event.message.text
@@ -47,7 +47,7 @@ class TocMachine(GraphMachine):
 	
     def is_going_to_orangethank(self, event):
         text = event.message.text
-        return ( text.lower() == "go to orangethank" or text.lower() == '好' )
+        return ( text.lower() == "go to orangethank" or text.lower() == '全力支持橘色!!!!!' )
 	
     def is_going_to_u87(self, event):
         text = event.message.text
@@ -275,12 +275,12 @@ class TocMachine(GraphMachine):
                 thumbnail_image_url='https://i.imgur.com/vpxlYRd.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='好',
-                        text='好'
+                        label='全力支持橘色!!!!!',
+                        text='全力支持橘色!!!!!'
                     ),
                     MessageTemplateAction(
-                        label='不好',
-                        text='不好'
+                        label='不要，誰理他',
+                        text='不要，誰理他'
                     ),
                 ]
             )
