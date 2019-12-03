@@ -23,7 +23,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_votenowagain(self, event):
         text = event.message.text
-        return (text.lower() == "go to votenowagain" or text.lower() == "好" or text.lower() == "小英" or text.lower() == "No" )
+        return (text.lower() == "go to votenowagain" or text.lower() == "好" or text.lower() == "小英" or text.lower() == "不要，誰理他" )
 
     def is_going_to_nowthank(self, event):
         text = event.message.text
@@ -31,7 +31,7 @@ class TocMachine(GraphMachine):
 		
     def is_going_to_chooseanother(self, event):
         text = event.message.text
-        return ( text.lower() == "go to chooseanother" or text.lower() == "不好" or text.lower() == "不會" or text.lower() == "回去再選一次" or text.lower() == "不要，誰理他")
+        return ( text.lower() == "go to chooseanother" or text.lower() == "不好" or text.lower() == "不會" or text.lower() == "回去再選一次")
 		
     def is_going_to_kp(self, event):
         text = event.message.text
