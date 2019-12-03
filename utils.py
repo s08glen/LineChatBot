@@ -24,12 +24,12 @@ def send_image_url(id, img_url):
 
 def reply_template(reply_token,template):
     line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(reply_token, template)
+    line_bot_api.reply_message(reply_token, [template,template])
     return "OK"
 
 def push_template(id,message):
     line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.push_message(id, TemplateSendMessage(alt_text="Template Example", template=message))
+    line_bot_api.push_message(id, message)
     return "OK"
 
 """
