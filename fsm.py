@@ -166,7 +166,7 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
                 title='Thank you',
-                text='小瑛感謝你??',
+                text='小英感謝你?',
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
                     MessageTemplateAction(
@@ -181,28 +181,136 @@ class TocMachine(GraphMachine):
         send_template(reply_token, buttons_template)
 
     def on_enter_chooseanother(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Vote now again?',
+                text='那這些人要支持誰',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='柯P',
+                        text='go to kp'
+                    ),
+                    MessageTemplateAction(
+                        label='小英',
+                        text='go to votenowagain'
+                    ),
+                    MessageTemplateAction(
+                        label='韓導',
+                        text='go to votehan'
+                    ),
+                    MessageTemplateAction(
+                        label='宋楚瑜',
+                        text='go to voteorange'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger choose another")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
 
     def on_enter_kp(self, event):
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger Kp didn't add")
+        self.go_back()
 
     def on_enter_votehan(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Vote Han',
+                text='2020大選你會投給韓國瑜嗎?',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='會',
+                        text='go to u87'
+                    ),
+                    MessageTemplateAction(
+                        label='不會',
+                        text='go to voteorange'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger vote han")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
 
     def on_enter_voteorange(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Vote Han',
+                text='你要投給宋楚瑜嗎?'',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='Yes',
+                        text='go to orangethank'
+                    ),
+                    MessageTemplateAction(
+                        label='No',
+                        text='go to voteonowagain'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger vote orange")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
 
     def on_enter_orangethank(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Thank you',
+                text='宋伯伯感謝你',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='回到一開始',
+                        text='go to user'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger orange thank")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
+
 
     def on_enter_u87(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='Thank you',
+                text='幹你腦袋有問題嗎?????',
+                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='回去重做',
+                        text='go to user'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger u87")
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
+
 
 
 '''

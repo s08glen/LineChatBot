@@ -131,6 +131,7 @@ machine = TocMachine(
             "dest": "user",
             "conditions": "is_going_to_user",
         },
+        {"trigger": "go_back", "source": "state1", "dest": "chooseanother"},
     ],
     initial="user",
     auto_transitions=False,
