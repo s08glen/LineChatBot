@@ -35,7 +35,7 @@ class TocMachine(GraphMachine):
 		
     def is_going_to_kp(self, event):
         text = event.message.text
-        return ( text.lower() == "go to kp" or text.lower() == '柯P')
+        return ( text.lower() == "go to kp" or text.lower() == '柯文哲')
 	
     def is_going_to_votehan(self, event):
         text = event.message.text
@@ -47,7 +47,7 @@ class TocMachine(GraphMachine):
 	
     def is_going_to_orangethank(self, event):
         text = event.message.text
-        return ( text.lower() == "go to orangethank" or text.lower() == 'Yes' )
+        return ( text.lower() == "go to orangethank" or text.lower() == '好' )
 	
     def is_going_to_u87(self, event):
         text = event.message.text
@@ -196,8 +196,8 @@ class TocMachine(GraphMachine):
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='柯P',
-                        text='柯P'
+                        label='柯文哲',
+                        text='柯文哲'
                     ),
                     MessageTemplateAction(
                         label='小英',
@@ -275,12 +275,12 @@ class TocMachine(GraphMachine):
                 thumbnail_image_url='https://i.imgur.com/vpxlYRd.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='Yes',
-                        text='Yes'
+                        label='好',
+                        text='好'
                     ),
                     MessageTemplateAction(
-                        label='No',
-                        text='No'
+                        label='不好',
+                        text='不好'
                     ),
                 ]
             )
