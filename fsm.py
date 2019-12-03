@@ -1,7 +1,7 @@
 from transitions.extensions import GraphMachine
 
 
-from utils import send_text_message, send_image_url
+from utils import send_text_message, send_image_url,send_template
 from linebot.models import MessageEvent, PostbackEvent, TextSendMessage, TemplateSendMessage, ButtonsTemplate,PostbackTemplateAction, MessageTemplateAction, URITemplateAction,ImageSendMessage
 
 
@@ -60,7 +60,7 @@ class TocMachine(GraphMachine):
         send_text_message(reply_token, "Trigger user")
 
     def on_enter_life(self, event):
-        '''
+        
         buttons_template = TemplateSendMessage(
             alt_text='Buttons Template',
             template=ButtonsTemplate(
@@ -79,12 +79,12 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
-        #reply_token = event.reply_token
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+        reply_token = event.reply_token
+        send_template(reply_token, buttons_template)
         '''
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger life")
-
+        '''
     def on_enter_nowgood(self, event):
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger nowgood")
