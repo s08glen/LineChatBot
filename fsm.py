@@ -23,7 +23,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_votenowagain(self, event):
         text = event.message.text
-        return text.lower() == "go to votenowagain"
+        return (text.lower() == "go to votenowagain" or text.lower() == "好" or text.lower() == "小英")
 
     def is_going_to_nowthank(self, event):
         text = event.message.text
@@ -119,7 +119,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='好',
-                        text='go to votenowagain'
+                        text='好'
                     ),
                     MessageTemplateAction(
                         label='不好',
@@ -201,7 +201,7 @@ class TocMachine(GraphMachine):
                     ),
                     MessageTemplateAction(
                         label='小英',
-                        text='go to votenowagain'
+                        text='小英'
                     ),
                     MessageTemplateAction(
                         label='韓導',
