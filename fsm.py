@@ -79,8 +79,9 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
+        user_id = event.source.user_id
         reply_token = event.reply_token
-        send_template(reply_token, buttons_template)
+        send_template(user_id, reply_token, buttons_template)
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger life")
         
