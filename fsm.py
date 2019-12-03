@@ -15,7 +15,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_life(self, event):
         text = event.message.text
-        return text.lower() == "Go"
+        return text.lower() == "go to life"
 
     def is_going_to_nowgood(self, event):
         text = event.message.text
@@ -67,7 +67,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='Go',
-                        text='Go'
+                        text='go to life'
                     ),
                 ]
             )
@@ -280,7 +280,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='回到一開始',
-                        text='好'
+                        text='go to user'
                     ),
                 ]
             )
