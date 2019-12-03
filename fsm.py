@@ -83,7 +83,7 @@ class TocMachine(GraphMachine):
         
         #user_id = event.source.user_id
         reply_token = event.reply_token
-        push_template(id,buttons_template)
+        #push_template(id,buttons_template)
         reply_template(reply_token, buttons_template)
         '''
         reply_token = event.reply_token
