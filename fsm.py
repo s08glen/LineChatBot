@@ -39,7 +39,7 @@ class TocMachine(GraphMachine):
 	
     def is_going_to_votehan(self, event):
         text = event.message.text
-        return text.lower() == "go to votehan"
+        return ( text.lower() == "go to votehan" or text.lower() == "不好")
 
     def is_going_to_voteorange(self, event):
         text = event.message.text
@@ -92,7 +92,8 @@ class TocMachine(GraphMachine):
                     ),
                     MessageTemplateAction(
                         label='不好',
-                        text='go to votehan'
+                        #text='go to votehan'
+                        text='不好'
                     ),
                 ]
             )
