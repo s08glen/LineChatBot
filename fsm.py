@@ -87,11 +87,11 @@ class TocMachine(GraphMachine):
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='go to nowgood',
+                        label='好',
                         text='go to nowgood'
                     ),
                     MessageTemplateAction(
-                        label='go to votehh',
+                        label='不好',
                         text='go to votehan'
                     ),
                 ]
@@ -214,9 +214,25 @@ class TocMachine(GraphMachine):
         send_template(reply_token, buttons_template)
 
     def on_enter_kp(self, event):
+        user_id = event.source.user_id
+        print(user_id)
+        buttons_template = TemplateSendMessage(
+            alt_text='Buttons Template',
+            template=ButtonsTemplate(
+                title='額....',
+                text='他沒參選總統捏',
+                thumbnail_image_url='https://i.imgur.com/zpWkQqn.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='回去再選一次',
+                        text='go to chooseanother'
+                    ),
+                ]
+            )
+        )
         reply_token = event.reply_token
-        send_text_message(reply_token, "Trigger Kp didn't add")
-        self.go_back()
+        #push_template(id,buttons_template)
+        send_template(reply_token, buttons_template)
 
     def on_enter_votehan(self, event):
         user_id = event.source.user_id
