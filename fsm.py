@@ -11,19 +11,19 @@ class TocMachine(GraphMachine):
 
     def is_going_to_user(self, event):
         text = event.message.text
-        return text.lower() == "go to user"
+        return ( (text.lower() == "go to user") or (text.lower() == "好")  )
 
     def is_going_to_life(self, event):
         text = event.message.text
-        return text.lower() == "go to life"
+        return text.lower() == "Go"
 
     def is_going_to_nowgood(self, event):
         text = event.message.text
-        return text.lower() == "go to nowgood"
+        return ( (text.lower() == "普通，還ok") or (text.lower() == "好")  )
 
     def is_going_to_votenowagain(self, event):
         text = event.message.text
-        return text.lower() == "go to votenowagain"
+        return ( (text.lower() == "普通，沒感覺") or (text.lower() == "好") or (text.lower() == "go to votenowagain") )
 
     def is_going_to_nowthank(self, event):
         text = event.message.text
@@ -67,7 +67,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='Go',
-                        text='go to life'
+                        text='Go'
                     ),
                 ]
             )
@@ -87,12 +87,16 @@ class TocMachine(GraphMachine):
                 thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='go to nowgood',
-                        text='go to nowgood'
+                        label='好',
+                        text='好'
                     ),
                     MessageTemplateAction(
-                        label='go to votehh',
-                        text='go to votehan'
+                        label='普通，還ok',
+                        text='普通，還ok'
+                    ),
+                    MessageTemplateAction(
+                        label='不好',
+                        text='不好'
                     ),
                 ]
             )
@@ -114,7 +118,11 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='好',
-                        text='go to votenowagain'
+                        text='好'
+                    ),
+                    MessageTemplateAction(
+                        label='普通，沒感覺',
+                        text='普通，沒感覺'
                     ),
                     MessageTemplateAction(
                         label='不好',
@@ -166,12 +174,12 @@ class TocMachine(GraphMachine):
             alt_text='Buttons Template',
             template=ButtonsTemplate(
                 title='Thank you',
-                text='小英感謝你?',
+                text='小英感謝你',
                 thumbnail_image_url='https://i.imgur.com/gWUraP3.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='回到一開始',
-                        text='go to user'
+                        text='好'
                     ),
                 ]
             )
@@ -280,7 +288,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='回到一開始',
-                        text='go to user'
+                        text='好'
                     ),
                 ]
             )
@@ -302,7 +310,7 @@ class TocMachine(GraphMachine):
                 actions=[
                     MessageTemplateAction(
                         label='回去重投',
-                        text='go to user'
+                        text='好'
                     ),
                 ]
             )
