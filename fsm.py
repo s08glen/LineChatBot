@@ -73,7 +73,7 @@ class TocMachine(GraphMachine):
                         text='go to nowgood'
                     ),
                     MessageTemplateAction(
-                        label='go to votehan',
+                        label='go to votehh',
                         text='go to votehan'
                     ),
                 ]
