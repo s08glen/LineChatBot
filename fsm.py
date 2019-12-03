@@ -9,6 +9,10 @@ class TocMachine(GraphMachine):
     def __init__(self, **machine_configs):
         self.machine = GraphMachine(model=self, **machine_configs)
 
+    def is_going_to_user(self, event):
+        text = event.message.text
+        return text.lower() == "go to user"
+
     def is_going_to_life(self, event):
         text = event.message.text
         return text.lower() == "go to life"
@@ -50,36 +54,50 @@ class TocMachine(GraphMachine):
         return text.lower() == "go to u87"
 
 
+
+    def on_enter_user(self, event):
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger user")
+
     def on_enter_life(self, event):
         reply_token = event.reply_token
         send_text_message(reply_token, "Trigger life")
 
     def on_enter_nowgood(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger nowgood")
 
     def on_enter_votenowagain(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger vote now again")
 
     def on_enter_nowthank(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger nowthank")
 
     def on_enter_chooseanother(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger choose another")
 
     def on_enter_kp(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger Kp didn't add")
 
     def on_enter_votehan(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger vote han")
 
     def on_enter_voteorange(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger vote orange")
 
     def on_enter_orangethank(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger orange thank")
 
     def on_enter_u87(self, event):
-        pass
+        reply_token = event.reply_token
+        send_text_message(reply_token, "Trigger u87")
 
 
 '''
