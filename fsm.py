@@ -43,7 +43,7 @@ class TocMachine(GraphMachine):
 
     def is_going_to_voteorange(self, event):
         text = event.message.text
-        return ( text.lower() == "go to voteorange" or text.lower() == "宋楚瑜" or text.lower() == "不會")
+        return ( text.lower() == "go to voteorange" or text.lower() == "宋楚瑜" or text.lower() == "不會" or text.lower()== "不會，草包一個，滿嘴謊話，整天畫虎爛")
 	
     def is_going_to_orangethank(self, event):
         text = event.message.text
@@ -51,7 +51,7 @@ class TocMachine(GraphMachine):
 	
     def is_going_to_u87(self, event):
         text = event.message.text
-        return (text.lower() == "go to u87" or text.lower() == "會")
+        return (text.lower() == "go to u87" or text.lower() == "發大財發大財，一定支持絕對支持，韓國瑜凍蒜!!!")
 
 
 
@@ -250,12 +250,12 @@ class TocMachine(GraphMachine):
                 thumbnail_image_url='https://i.imgur.com/bi6SDgg.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='會',
-                        text='會'
+                        label='發大財發大財，一定支持絕對支持，韓國瑜凍蒜!!!',
+                        text='發大財發大財，一定支持絕對支持，韓國瑜凍蒜!!!'
                     ),
                     MessageTemplateAction(
-                        label='不會',
-                        text='不會'
+                        label='不會，草包一個，滿嘴謊話，整天畫虎爛',
+                        text='不會，草包一個，滿嘴謊話，整天畫虎爛'
                     ),
                 ]
             )
