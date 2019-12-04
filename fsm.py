@@ -25,7 +25,7 @@ def movie():
         spl = link.split('&')
         spl2 = spl[0].split('=')
         #print(spl2)
-        content += '{}\n'.format(spl2[1])
+        content += '{}\n\n'.format(spl2[1])
     return content
 
 
