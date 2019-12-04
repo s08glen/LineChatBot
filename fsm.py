@@ -19,7 +19,7 @@ def movie():
     content = ""
     #print(soup.prettify())
     for index, data in enumerate(soup.select('a[href^="/url"]')):
-        if index == 20:
+        if index == 3:
             return content
         link =  data['href']
         content += '{}\n'.format(link)
