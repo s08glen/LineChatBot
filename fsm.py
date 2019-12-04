@@ -11,7 +11,7 @@ from urllib.request import urlretrieve
 requests.packages.urllib3.disable_warnings()
 
 def movie():
-    target_url = 'https://www.google.com/search?q=%E9%9F%93%E5%9C%8B%E7%91%9C&tbs=qdr:m'
+    target_url = 'https://www.google.com.tw/search?q=%E9%9F%93%E5%9C%8B%E7%91%9C&tbs=qdr:m,ctr:countryTW&cr=countryTW'
     rs = requests.session()
     res = rs.get(target_url, verify=False)
     res.encoding = 'utf-8'
