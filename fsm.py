@@ -20,7 +20,7 @@ def movie():
         if index == 20:
             return content
         link =  data['href']
-        content += '{}\n{}\n'.format(title, link)
+        content += '{}\n{}\n'.format(link)
     return content
 
 
