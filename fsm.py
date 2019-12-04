@@ -101,7 +101,6 @@ class TocMachine(GraphMachine):
         send_template(reply_token, buttons_template)
 
     def on_enter_life(self, event):
-        a = movie()
         user_id = event.source.user_id
         print(user_id)
         buttons_template = TemplateSendMessage(
@@ -129,7 +128,7 @@ class TocMachine(GraphMachine):
         )
         reply_token = event.reply_token
         #push_template(id,buttons_template)
-        send_template_withtext(reply_token, buttons_template,a)
+        send_template(reply_token, buttons_template)
 
 
     def on_enter_nowgood(self, event):
@@ -337,6 +336,7 @@ class TocMachine(GraphMachine):
 
 
     def on_enter_u87(self, event):
+        a = movie()
         user_id = event.source.user_id
         print(user_id)
         buttons_template = TemplateSendMessage(
@@ -355,7 +355,7 @@ class TocMachine(GraphMachine):
         )
         reply_token = event.reply_token
         #push_template(id,buttons_template)
-        send_template(reply_token, buttons_template)
+        send_template_withtext(reply_token, buttons_template,a)
 
 
 

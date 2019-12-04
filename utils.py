@@ -29,7 +29,7 @@ def send_template(reply_token,template):
 
 def send_template_withtext(reply_token,template,text):
     line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(reply_token, [template,TextSendMessage(text=text)])
+    line_bot_api.reply_message(reply_token, [TextSendMessage(text=text),template])
     return "OK"
 '''
 def push_template(id,message):
