@@ -16,7 +16,7 @@ def movie():
     res = rs.get(target_url, verify=False)
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')   
-    content = "以下為韓國瑜草包近期新聞:\n\n"
+    content = "以下為韓國瑜草包近期新聞:\n"
     #print(soup.prettify())
     for index, data in enumerate(soup.select('a[href^="/url"]')):
         if index == 3:
@@ -25,7 +25,7 @@ def movie():
         spl = link.split('&')
         spl2 = spl[0].split('=')
         #print(spl2)
-        content += '{}\n\n'.format(spl2[1])
+        content += '{}\n'.format(spl2[1])
     return content
 
 
