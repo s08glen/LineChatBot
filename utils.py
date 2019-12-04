@@ -26,6 +26,11 @@ def send_template(reply_token,template):
     line_bot_api = LineBotApi(channel_access_token)
     line_bot_api.reply_message(reply_token, template)
     return "OK"
+
+def send_template_withtext(reply_token,template,text):
+    line_bot_api = LineBotApi(channel_access_token)
+    line_bot_api.reply_message(reply_token, [template,text])
+    return "OK"
 '''
 def push_template(id,message):
     line_bot_api = LineBotApi(channel_access_token)

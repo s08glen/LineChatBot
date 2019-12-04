@@ -1,8 +1,28 @@
+
+import requests 
 from transitions.extensions import GraphMachine
 
 
-from utils import send_text_message, send_image_url,send_template
+from utils import send_text_message, send_image_url,send_template, send_template_withtext
 from linebot.models import MessageEvent, PostbackEvent, TextSendMessage, TemplateSendMessage, ButtonsTemplate,PostbackTemplateAction, MessageTemplateAction, URITemplateAction,ImageSendMessage
+
+from bs4 import BeautifulSoup
+from urllib.request import urlretrieve
+
+def movie():
+    target_url = 'https://movies.yahoo.com.tw/'
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')   
+    content = ""
+    for index, data in enumerate(soup.select('div.movielist_info h1 a')):
+        if index == 20:
+            return content       
+        title = data.text
+        link =  data['href']
+        content += '{}\n{}\n'.format(title, link)
+    return content
 
 
 class TocMachine(GraphMachine):
@@ -77,6 +97,7 @@ class TocMachine(GraphMachine):
         send_template(reply_token, buttons_template)
 
     def on_enter_life(self, event):
+        a = movie()
         user_id = event.source.user_id
         print(user_id)
         buttons_template = TemplateSendMessage(
@@ -104,7 +125,7 @@ class TocMachine(GraphMachine):
         )
         reply_token = event.reply_token
         #push_template(id,buttons_template)
-        send_template(reply_token, buttons_template)
+        send_template_withtext(reply_token, buttons_template,a)
 
 
     def on_enter_nowgood(self, event):
