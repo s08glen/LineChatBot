@@ -10,16 +10,16 @@ from bs4 import BeautifulSoup
 from urllib.request import urlretrieve
 
 def movie():
-    target_url = 'https://www.ptt.cc/bbs/CVS/index.html'
+    target_url = 'http://www.ctitv.com.tw/'
     rs = requests.session()
     res = rs.get(target_url, verify=False)
     res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')   
     content = ""
-    for index, data in enumerate(soup.select('div.title a')):
+    for index, data in enumerate(soup.select('div.rss_image a')):
         if index == 20:
             return content       
-        title = data.text
+        title = data['title']
         link =  data['href']
         content += '{}\n{}\n'.format(title, link)
     return content
