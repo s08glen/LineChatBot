@@ -27,9 +27,9 @@ def send_template(reply_token,template):
     line_bot_api.reply_message(reply_token, template)
     return "OK"
 
-def send_template_withtext(reply_token,template,text):
+def send_template_withtext(reply_token,template,text,p_eye):
     line_bot_api = LineBotApi(channel_access_token)
-    line_bot_api.reply_message(reply_token, [TextSendMessage(text=text),template])
+    line_bot_api.reply_message(reply_token, [TextSendMessage(text=text),template,p_eye])
     return "OK"
 '''
 def push_template(id,message):

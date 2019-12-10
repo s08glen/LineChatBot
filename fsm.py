@@ -353,9 +353,15 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
+        p_eye = {
+            "type": "image",
+            "originalContentUrl": "https://i.imgur.com/xaItT04.jpg",
+            "previewImageUrl": "https://i.imgur.com/xaItT04.jpg"
+        }
         reply_token = event.reply_token
+        
         #push_template(id,buttons_template)
-        send_template_withtext(reply_token, buttons_template,a)
+        send_template_withtext(reply_token, buttons_template,a,p_eye)
 
 
 
