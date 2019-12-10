@@ -321,7 +321,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Thank you',
                 text='宋伯伯感謝你',
-                thumbnail_image_url='https://i.imgur.com/vpxlYRd.jpg',
+                thumbnail_image_url='https://i.imgur.com/gEySqRX.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='回到一開始',
