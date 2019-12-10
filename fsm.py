@@ -354,9 +354,8 @@ class TocMachine(GraphMachine):
             )
         )
         p_eye = ImageSendMessage(
-            "type": "image",
-            "originalContentUrl": "https://i.imgur.com/xaItT04.jpg",
-            "previewImageUrl": "https://i.imgur.com/xaItT04.jpg"
+            original_content_url= "https://i.imgur.com/xaItT04.jpg",
+            preview_image_url= "https://i.imgur.com/xaItT04.jpg"
         )
         reply_token = event.reply_token
         
