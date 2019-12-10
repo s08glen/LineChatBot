@@ -38,7 +38,6 @@ def push_template(id,message):
     return "OK"
 '''
 
-
 """
 def send_button_message(id, text, buttons):
     pass

@@ -363,7 +363,6 @@ class TocMachine(GraphMachine):
         send_template_withtext(reply_token, buttons_template,a,p_eye)
 
 
-
 '''
     def on_exit_state1(self):
         print("Leaving state1")
