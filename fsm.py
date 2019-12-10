@@ -217,7 +217,7 @@ class TocMachine(GraphMachine):
             template=ButtonsTemplate(
                 title='Vote Who',
                 text='那這些人要支持誰',
-                thumbnail_image_url='https://i.imgur.com/mjUakr3.jpg',
+                thumbnail_image_url='https://i.imgur.com/IE3pvU2.png',
                 actions=[
                     MessageTemplateAction(
                         label='柯文哲',
