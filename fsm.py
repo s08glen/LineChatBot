@@ -353,7 +353,7 @@ class TocMachine(GraphMachine):
                 ]
             )
         )
-        p_eye = {
+        p_eye = ImageSendMessage{
             "type": "image",
             "originalContentUrl": "https://i.imgur.com/xaItT04.jpg",
             "previewImageUrl": "https://i.imgur.com/xaItT04.jpg"
